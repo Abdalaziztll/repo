@@ -6,8 +6,6 @@ import 'package:glass/modules/favoritPage.dart';
 
 import 'package:glass/pdfview.dart';
 
-
-
 class HomePage1 extends StatefulWidget {
   HomePage1({super.key});
 
@@ -16,37 +14,36 @@ class HomePage1 extends StatefulWidget {
 }
 
 class _HomePage1State extends State<HomePage1> {
-
-int currentIndex=1;
-List<Widget> Screens=[
-  FavoraitePage(),
-  HomePage2(),
-  ProfilePage(),
-];
+  int currentIndex = 1;
+  List<Widget> Screens = [
+    FavoraitePage(),
+    HomePage2(),
+    ProfilePage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-
-        
         backgroundColor: Colors.white.withOpacity(0.3),
-currentIndex: currentIndex,
-onTap: (index) {
-  setState(() {
-    currentIndex=index;
-  });
-},
-
+        currentIndex: currentIndex,
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
         items: [
-        BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "المفضلة"),
-        BottomNavigationBarItem(icon: Icon(Icons.home),label: "الصفحة الرئيسية"),
-        BottomNavigationBarItem(icon: Icon(Icons.person,),label: "حسابك")
-      
-      
-      ],
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "المفضلة"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home), label: "الصفحة الرئيسية"),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person,
+              ),
+              label: "حسابك")
+        ],
       ),
-      body:Screens[currentIndex] ,
+      body: Screens[currentIndex],
     );
   }
 }

@@ -5,49 +5,42 @@ import 'package:glass/testFromYourChoice.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Schame extends StatelessWidget {
-   Schame({super.key});
+  Schame({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage(
-              "image/3.jpg",
-            ),
-            fit: BoxFit.fill,
-          )),
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+          image: AssetImage(
+            "image/3.jpg",
+          ),
+          fit: BoxFit.fill,
+        )),
+        child: SingleChildScrollView(
           child: Column(
             children: [
-         
-            
-             Center(
-              
-               child: Container(
-                width: 400,
-                height: 400,
-                child:SfCartesianChart(
-                     
-                     
-                      
-                      
-                           primaryXAxis: CategoryAxis(),
-                           primaryYAxis: NumericAxis(),
-                           series: <ChartSeries>[
-                ColumnSeries<Levels, String>(
-                  dataSource: GetColumnData(),
-                  xValueMapper: (Levels l, _) => l.LevelNameForClassLevel,
-                  yValueMapper: (Levels l, _) => l.TheValueOfAdvancedInLevel,
-                     
+              Center(
+                child: Container(
+                  width: 400,
+                  height: 400,
+                  child: SfCartesianChart(
+                    primaryXAxis: CategoryAxis(),
+                    primaryYAxis: NumericAxis(),
+                    series: <ChartSeries>[
+                      ColumnSeries<Levels, String>(
+                        dataSource: GetColumnData(),
+                        xValueMapper: (Levels l, _) => l.LevelNameForClassLevel,
+                        yValueMapper: (Levels l, _) =>
+                            l.TheValueOfAdvancedInLevel,
+                      ),
+                    ],
+                  ),
                 ),
-                           ],
-                           
-                         ),
-               ),
-             )
-             ,
+              ),
               // Padding(
               //   padding: const EdgeInsets.all(8.0),
               //   child: Row(
@@ -60,7 +53,7 @@ class Schame extends StatelessWidget {
               //                  color: Colors.white.withOpacity(0.3),
               //                 borderRadius:BorderRadius.circular(10)
               //               ),
-                           
+          
               //           child: InkWell(
               //             onTap: () {
               //                 Navigator.push(
@@ -77,7 +70,7 @@ class Schame extends StatelessWidget {
               //         ),
               //         InkWell(
               //           onTap: () {
-                          
+          
               //           },
               //           child: InkWell(
               //              onTap: () {
@@ -92,7 +85,7 @@ class Schame extends StatelessWidget {
               //                  color: Colors.white.withOpacity(0.3),
               //                 borderRadius:BorderRadius.circular(10)
               //               ),
-                           
+          
               //               child: Center(
               //                   child: Text(
               //                 "مستويات",
@@ -112,11 +105,11 @@ class Schame extends StatelessWidget {
               //                    color: Colors.white.withOpacity(0.3),
               //                   borderRadius:BorderRadius.circular(10)
               //                 ),
-                             
+          
               //             child: Align(
               //               alignment:Alignment.center,
               //                 child: Text("اختبار",
-                        
+          
               //               style: TextStyle(fontSize: 14, color: Colors.white),
               //             )),
               //           ),
@@ -125,6 +118,8 @@ class Schame extends StatelessWidget {
               // ),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

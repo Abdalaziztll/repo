@@ -158,44 +158,63 @@ class _questionPageState extends State<questionPage> {
                     showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-
                               title: Padding(
-                                padding: const EdgeInsets.only(left:70),
+                                padding: const EdgeInsets.only(left: 70),
                                 child: Text(":النتيجة"),
                               ),
                               content: SizedBox(
-                                height: 150,
+                                  height: 150,
                                   child: Column(
-                                children: [
-                                  Row(
                                     children: [
-                                      SizedBox(
-                                        width: 40,
-                                        height: 40,
-                                        child: LottieBuilder.network(
-                                            "https://lottie.host/41a2b092-ee8f-4bff-afc4-75d9b3ca03c6/YioXRhThKD.json"),
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            width: 40,
+                                            height: 40,
+                                            child: LottieBuilder.network(
+                                                "https://lottie.host/41a2b092-ee8f-4bff-afc4-75d9b3ca03c6/YioXRhThKD.json"),
+                                          ),
+                                          Text(" عدد الاجابات الصحيحة :" +
+                                              "${correct_counter} ")
+                                        ],
                                       ),
-                                      Text(" عدد الاجابات الصحيحة :" +
-                                          "${correct_counter} ")
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            width: 40,
+                                            height: 40,
+                                            child: LottieBuilder.network(
+                                              "https://lottie.host/98c266de-6ece-4241-ac54-28bf9c01f625/PsVNxD1ekr.json",
+                                              errorBuilder:
+                                                  (context, error, stackTrace) {
+                                                // ! add error builder make your app useful when it on offline mode
+                                                return Icon(Icons.check);
+                                              },
+                                            ),
+                                          ),
+                                          Text(" عدد الاجابات الخاطئة :" +
+                                              "${incorrect_counter} ")
+                                        ],
+                                      )
                                     ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(width: 40,
-                                      height: 40,
-                                        child: LottieBuilder.network(
-                                            "https://lottie.host/98c266de-6ece-4241-ac54-28bf9c01f625/PsVNxD1ekr.json"),
-                                      ),
-                                      Text(" عدد الاجابات الخاطئة :" +
-                                          "${incorrect_counter} ")
-                                    ],
-
-                                  )
-                                ],
-                              )),
-                              actions: [TextButton(onPressed: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Levels(LevelNameForClassLevel: "", TheValueOfAdvancedInLevel: 0)));
-                              }, child: Text("حسناً"))],
+                                  )),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      // ! We Must use Navigator.pop
+                                      // ! because it make nested route like this
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) => Levels(
+                                      //         LevelNameForClassLevel: "",
+                                      //         TheValueOfAdvancedInLevel: 0),
+                                      //   ),
+                                      // );
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text("حسناً"))
+                              ],
                             ));
                   },
                   child: Text(

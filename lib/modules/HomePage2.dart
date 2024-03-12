@@ -14,37 +14,31 @@ class HomePage2 extends StatelessWidget {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        
           appBar: AppBar(
-            toolbarHeight: 3, 
-
+            toolbarHeight: 3,
             leading: Container(
               width: 50,
               height: 50,
               color: Colors.white,
             ),
-           
-            bottom: TabBar(
-             
-              tabs: [
+            bottom: TabBar(tabs: [
               Tab(
-               height: 60,
+                height: 60,
                 text: "المخطط",
                 icon: Icon(Icons.schema),
               ),
               Tab(
-                 height: 60,
+                height: 60,
                 text: "مستويات",
                 icon: Icon(Icons.stairs),
               ),
               Tab(
-                 height: 60,
+                height: 60,
                 text: "اختبار",
                 icon: Icon(Icons.book_sharp),
               ),
               Tab(
-                
- height: 60,
+                height: 60,
                 text: "تصفح",
                 icon: Icon(Icons.picture_as_pdf),
               )
@@ -58,10 +52,7 @@ class HomePage2 extends StatelessWidget {
             ),
             testFromYourChoicePage(),
             PdfPage(),
-          ])
-          
-          
-          ),
+          ])),
     );
   }
 }

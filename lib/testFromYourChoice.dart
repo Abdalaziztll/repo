@@ -6,7 +6,7 @@ class testFromYourChoicePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
         appBar: AppBar(
           // leading: IconButton(
           //   onPressed: () {
@@ -27,32 +27,32 @@ class testFromYourChoicePage extends StatelessWidget {
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage(
-              "image/3.jpg",
+            image: DecorationImage(
+              image: AssetImage(
+                "image/3.jpg",
+              ),
+              fit: BoxFit.fill,
             ),
-            fit: BoxFit.fill,
-          )),
+          ),
           child: Column(
             children: [
-
               InkWell(
-                onTap: () {
-                  
-                },
+                onTap: () {},
                 child: Container(
                   width: 200,
                   height: 40,
-                  decoration: BoxDecoration(color: Colors.white.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(19)
-                  ),
-                  child: Center(child: Text("اختبار في شخصيات معينة",
-                  style: TextStyle(color: Colors.white),
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.3),
+                      borderRadius: BorderRadius.circular(19)),
+                  child: Center(
+                      child: Text(
+                    "اختبار في شخصيات معينة",
+                    style: TextStyle(color: Colors.white),
                   )),
                 ),
               )
             ],
           ),
-    ));
+        ));
   }
 }
