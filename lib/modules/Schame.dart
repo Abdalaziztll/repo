@@ -16,7 +16,7 @@ class Schame extends StatelessWidget {
         decoration: BoxDecoration(
             image: DecorationImage(
           image: AssetImage(
-            "image/3.jpg",
+            "assets/image/3.jpg",
           ),
           fit: BoxFit.fill,
         )),

@@ -1,12 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:glass/HomePage1.dart';
+import 'package:glass/localization/app_string.dart';
 
 class signup extends StatelessWidget {
   signup({super.key});
 
   @override
   Widget build(BuildContext context) {
+    context.setLocale(Locale('ar'));
     return Scaffold(
       body: Container(
           height: double.infinity,
@@ -14,7 +17,7 @@ class signup extends StatelessWidget {
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(
-                    "image/3.jpg",
+                    "assets/image/3.jpg",
                   ),
                   //   opacity: 0.7,
                   fit: BoxFit.fill)),
@@ -25,16 +28,16 @@ class signup extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Sign Up",
+                    "Sign Up".tr(),
                     style: TextStyle(fontSize: 28, color: Colors.white),
-                  ),
+                  ).tr(),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20),
-                  child: TextField(
+                  child: TextFormField(
                     decoration: InputDecoration(
                         hintStyle: TextStyle(color: Colors.white, fontSize: 14),
-                        hintText: 'Username',
+                        hintText: "Username".tr(),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15))),
                   ),
@@ -44,7 +47,7 @@ class signup extends StatelessWidget {
                   child: TextField(
                     decoration: InputDecoration(
                         hintStyle: TextStyle(color: Colors.white, fontSize: 14),
-                        hintText: 'Password',
+                        hintText: 'Password'.tr(),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15))),
                   ),
@@ -55,8 +58,11 @@ class signup extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => HomePage1(),
+                          
                         ),
                       );
+                      
+    
                     },
                     child: Container(
                       color: Colors.white.withOpacity(0.1),
@@ -64,11 +70,12 @@ class signup extends StatelessWidget {
                       height: 50,
                       child: Center(
                         child: Text(
-                          "SignUp",
+                         "Sign Up".tr(),
                           style: TextStyle(color: Colors.white, fontSize: 14),
-                        ),
+                        ).tr(),
                       ),
-                    ),)
+                    ),),
+                    
               ],
             ),
           )),

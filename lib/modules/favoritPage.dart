@@ -6,23 +6,32 @@ class FavoraitePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Personality> Setfav = [];
+    pers.forEach(
+      (element) {
+      print(element.toMap());
+        if (element.isFav) {
+          Setfav.add(element);
+        }
+      },
+    );
     return Container(
       decoration: BoxDecoration(
-        image:
-            DecorationImage(image: AssetImage("image/3.jpg"), fit: BoxFit.fill),
+        image: DecorationImage(
+            image: AssetImage("assets/image/3.jpg"), fit: BoxFit.fill),
       ),
       child: Center(
-        child: (favorite.length == 0)
+        child: (Setfav.length == 0)
             ? Text("There is Nothing in fav")
             : ListView.builder(
-                itemCount: favorite.length,
+                itemCount: Setfav.length,
                 //محاولة عدم تكرارا الصفحة المفضلة
                 // بس ما زبطت :(
 
                 itemBuilder: (context, index) {
                   // List<Personality> ResultOfFavorait = [];
 
-                  return pdfItem(personality: favorite[index]);
+                  return pdfItem(personality: Setfav.toList().elementAt(index));
                 },
               ),
       ),

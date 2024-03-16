@@ -18,18 +18,18 @@ class Levels extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //   leading: IconButton(
-        //     onPressed: () {
-        //       Navigator.push(
-        //           context, MaterialPageRoute(builder: (context) => HomePage1()));
-        //     },
-        //     icon: Icon(
-        //       Icons.arrow_back,
-        //       color: Colors.white,
-        //     ),
-        //  ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomePage1()));
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+         ),
         flexibleSpace: Image(
-          image: AssetImage("image/3.jpg"),
+          image: AssetImage("assets/image/3.jpg"),
           fit: BoxFit.fill,
         ),
       ),
@@ -37,7 +37,7 @@ class Levels extends StatelessWidget {
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
-                  "image/3.jpg",
+                  "assets/image/3.jpg",
                 ),
                 //   opacity: 0.7,
                 fit: BoxFit.fill)),

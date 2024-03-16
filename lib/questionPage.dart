@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:glass/HomePage1.dart';
 import 'package:glass/levels.dart';
+import 'package:glass/modules/HomePage2.dart';
+import 'package:glass/modules/Schame.dart';
 import 'package:glass/quesyionmodel.dart';
 import 'package:lottie/lottie.dart';
 
@@ -26,8 +28,77 @@ class _questionPageState extends State<questionPage> {
       isSelected = false;
       currentQuestionIndex++;
       if (currentQuestionIndex >= QuestionsForLevelone.length) {
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(" the questions have completed")));
+
+
+        // ScaffoldMessenger.of(context).showSnackBar(
+        //     SnackBar(content: Text(" the questions have completed")));
+          showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              title: Padding(
+                                padding: const EdgeInsets.only(left: 70),
+                                child: Text(":النتيجة"),
+                              ),
+                              content: SizedBox(
+                                  height: 150,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            width: 40,
+                                            height: 40,
+                                            child: LottieBuilder.network(
+                                                "https://lottie.host/41a2b092-ee8f-4bff-afc4-75d9b3ca03c6/YioXRhThKD.json"),
+                                          ),
+                                          Text(" عدد الاجابات الصحيحة :" +
+                                              "${correct_counter} ")
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            width: 40,
+                                            height: 40,
+                                            child: LottieBuilder.network(
+                                              "https://lottie.host/98c266de-6ece-4241-ac54-28bf9c01f625/PsVNxD1ekr.json",
+                                              errorBuilder:
+                                                  (context, error, stackTrace) {
+                                                // ! add error builder make your app useful when it on offline mode
+                                                return Icon(Icons.check);
+                                              },
+                                            ),
+                                          ),
+                                          Text(" عدد الاجابات الخاطئة :" +
+                                              "${incorrect_counter} ")
+                                        ],
+                                      )
+                                    ],
+                                  )),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      // ! We Must use Navigator.pop
+                                      // ! because it make nested route like this
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) => Levels(
+                                      //         LevelNameForClassLevel: "",
+                                      //         TheValueOfAdvancedInLevel: 0),
+                                      //   ),
+                                      // );
+                                      Navigator.pop(context);
+                                    },
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(context,MaterialPageRoute(builder: (context)=>
+                                        //هون القيم المفروض عدد الاجابات الصح لان بدي استدعي هالتابع وهو بياخد بارميترات كرمال يحفظهم بالجدول
+                                        Levels(LevelNameForClassLevel: '', TheValueOfAdvancedInLevel:correct_counter )));
+                                      },
+                                      child: Text("حسناً")))
+                              ],
+                            ));
         currentQuestionIndex = QuestionsForLevelone.length - 1;
       }
     });
@@ -40,7 +111,7 @@ class _questionPageState extends State<questionPage> {
     return Scaffold(
       appBar: AppBar(
           flexibleSpace: Image(
-            image: AssetImage("image/3.jpg"),
+            image: AssetImage("assets/image/3.jpg"),
             fit: BoxFit.fill,
           ),
           actions: [
@@ -55,7 +126,7 @@ class _questionPageState extends State<questionPage> {
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-          image: AssetImage("image/3.jpg"),
+          image: AssetImage("assets/image/3.jpg"),
           fit: BoxFit.fill,
         )),
         child: Column(
@@ -76,8 +147,6 @@ class _questionPageState extends State<questionPage> {
                   final optionText = question.options[optionIndex];
 
                   return Container(
-                    color: Colors.white.withOpacity(0.3),
-                    margin: EdgeInsets.zero,
                     child: InkWell(
                       onTap: () {
                         isCorrect = optionIndex == question.CorrectAnswerIndex;
@@ -86,16 +155,16 @@ class _questionPageState extends State<questionPage> {
                         });
                         if (isCorrect && isSelected) {
                           correct_counter++;
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                                content: Text("Correct!"),
-                                backgroundColor: Colors.green),
-                          );
+                          // ScaffoldMessenger.of(context).showSnackBar(
+                          //   SnackBar(
+                          //       content: Text("Correct!"),
+                          //       backgroundColor: Colors.green),
+                          // );
                         } else {
                           incorrect_counter++;
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Incorrect.")),
-                          );
+                          // ScaffoldMessenger.of(context).showSnackBar(
+                          //   SnackBar(content: Text("Incorrect.")),
+                          // );
                         }
                       },
                       child: Padding(
@@ -104,28 +173,40 @@ class _questionPageState extends State<questionPage> {
                           children: [
                             Expanded(
                               child: Container(
-                                color: !isSelected
-                                    ? Colors.white.withOpacity(0.3)
-                                    : (question.CorrectAnswerIndex ==
-                                            optionIndex)
-                                        ? Colors.green
-                                        : Colors.red,
+                                decoration: BoxDecoration(
+                                 
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                     color: !isSelected
+                                      ? Colors.white.withOpacity(0.3)
+                                      : (question.CorrectAnswerIndex ==
+                                              optionIndex)
+                                          ?
+                                           const Color.fromARGB(
+                                              255, 155, 212, 157)
+                                          : const Color.fromARGB(
+                                              255, 202, 146, 142),
+                                  ),
+                                 
+                                ),
                                 alignment: Alignment.centerLeft,
                                 height: 40,
-                                child: Text(
-                                  optionText,
-                                  style: TextStyle(
-                                      fontSize: 16, color: Colors.white),
+                                child: Center(
+                                  child: Text(
+                                    optionText,
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ),
-                            Icon(
-                              !(isCorrect && isSelected)
-                                  ? Icons.check
-                                  : Icons.close,
-                              size: 24,
-                              color: isCorrect ? Colors.white : Colors.grey,
-                            ),
+                            // Icon(
+                            //   !(isCorrect && isSelected)
+                            //       ? Icons.check
+                            //       : Icons.close,
+                            //   size: 24,
+                            //   color: isCorrect ? Colors.white : Colors.grey,
+                            // ),
                           ],
                         ),
                       ),

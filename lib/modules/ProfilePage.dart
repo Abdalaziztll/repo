@@ -8,7 +8,7 @@ class ProfilePage extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image:
-            DecorationImage(image: AssetImage("image/3.jpg"), fit: BoxFit.fill),
+            DecorationImage(image: AssetImage("assets/image/3.jpg"), fit: BoxFit.fill),
       ),
       child: Center(
         child: Text(

@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:glass/HomePage1.dart';
+import 'package:glass/pdfIteam.dart';
 import 'package:glass/pdfview.dart';
 
-class categories extends StatelessWidget {
+class categories extends StatefulWidget {
+ 
   categories({super.key});
 
+  @override
+  State<categories> createState() => _categoriesState();
+}
+
+class _categoriesState extends State<categories> {
+     final controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,15 +20,38 @@ class categories extends StatelessWidget {
           leading: IconButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomePage1()));
+                  MaterialPageRoute(builder: (context) => HomePage1()),
+                  );
             },
             icon: Icon(
               Icons.arrow_back,
               color: Colors.white,
             ),
           ),
+                    title: Container(
+            width: 300,
+            height: 40,
+            decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(19)),
+            child: Center(
+              child: TextField(
+                  controller: controller,
+                  decoration: InputDecoration(
+                      border: InputBorder.none,
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      )),
+                  onChanged: (value) {
+                    setState(() {
+                      foundresult = runFiltervalue(value, ListPdfIteam);
+                    });
+                  }),
+            ),
+          ),
           flexibleSpace: Image(
-            image: AssetImage("image/3.jpg"),
+            image: AssetImage("assets/image/3.jpg"),
             fit: BoxFit.fill,
           ),
         ),
@@ -30,7 +61,7 @@ class categories extends StatelessWidget {
           decoration: BoxDecoration(
               image: DecorationImage(
             image: AssetImage(
-              "image/3.jpg",
+              "assets/image/3.jpg",
             ),
             fit: BoxFit.fill,
           )),
@@ -51,7 +82,7 @@ class categories extends StatelessWidget {
                    
                                     child: Center(
                       child: Text(
-                    " قبل",
+                    "  قبل الهجرة",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                                     )),
                                     decoration: BoxDecoration(
@@ -68,7 +99,7 @@ class categories extends StatelessWidget {
                     child: Container(
                     
                                     child: Center(
-                      child: Text("بعد",
+                      child: Text("بعد الهجرة",
                           style: TextStyle(color: Colors.white, fontSize: 20))),
                                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
@@ -85,7 +116,7 @@ class categories extends StatelessWidget {
                          width: 100,
                       height: 220,
                                     child: Center(
-                      child: Text("aa",
+                      child: Text("قبل الفتح",
                           style: TextStyle(color: Colors.white, fontSize: 20))),
                                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
@@ -104,7 +135,7 @@ class categories extends StatelessWidget {
                       height: 220,
                     
                                     child: Center(
-                      child: Text("mm",
+                      child: Text("بعد الفتح",
                           style: TextStyle(color: Colors.white, fontSize: 20))),
                                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),

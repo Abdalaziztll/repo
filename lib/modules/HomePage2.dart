@@ -51,7 +51,7 @@ class HomePage2 extends StatelessWidget {
               TheValueOfAdvancedInLevel: 1,
             ),
             testFromYourChoicePage(),
-            PdfPage(),
+           categories()
           ])),
     );
   }

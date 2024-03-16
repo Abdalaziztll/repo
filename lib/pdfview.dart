@@ -25,16 +25,15 @@ class _PdfPageState extends State<PdfPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          // leading: IconButton(
-          //   onPressed: () {
-          //     Navigator.pop(context,
-          //         MaterialPageRoute(builder: (context) => HomePage1()));
-          //   },
-          //   icon: Icon(
-          //     Icons.arrow_back,
-          //     color: Colors.white,
-          //   ),
-          // ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+          ),
           title: Container(
             width: 300,
             height: 40,
@@ -60,7 +59,7 @@ class _PdfPageState extends State<PdfPage> {
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("image/3.jpg"), fit: BoxFit.fill)),
+                    image: AssetImage("assets/image/3.jpg"), fit: BoxFit.fill)),
           )),
       body: Container(
         width: double.infinity,
@@ -68,7 +67,7 @@ class _PdfPageState extends State<PdfPage> {
         decoration: BoxDecoration(
             image: DecorationImage(
           image: AssetImage(
-            "image/3.jpg",
+            "assets/image/3.jpg",
           ),
           fit: BoxFit.fill,
         )),
